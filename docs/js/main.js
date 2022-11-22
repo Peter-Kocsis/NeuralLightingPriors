@@ -123,10 +123,4 @@
 
     
 })(jQuery);
-$('.form-range').on('input', function() {
-	var rangelevel = $(this).val();
-	var opacitylevel = rangelevel/100;
-	
-  $('#relighting_b0').css('opacity', opacitylevel);
-});
 
