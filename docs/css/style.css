@@ -500,3 +500,15 @@
     height: 720px;
     mix-blend-mode: screen;
 }
+.relighting_image_exp{
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    right: 0px;
+    top: 0px;
+	left: 0px;
+    width: 720px;
+    height: 720px;
+    opacity: 0;
+    mix-blend-mode: screen;
+}

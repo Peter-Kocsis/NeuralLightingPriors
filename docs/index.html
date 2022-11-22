@@ -102,7 +102,17 @@
         <h1 class="display-32">Results</h1>
         
 
-        <input type="color" id="color0" value="#ffffff" oninput="updateColor0(this.value);"> 
+        <input type="color" id="color0" value="#ffffff" oninput="updateColor(this.value, '0');"> 
+        <input type="color" id="color1" value="#ffffff" oninput="updateColor(this.value, '1');"> 
+        
+
+
+
+
+
+
+
+
         <!-- <input type="color" id="color1" value="#ffffff" oninput="updateColor1(this.value);">  -->
 
         <div class="slidecontainer">
@@ -121,18 +131,37 @@
           </div>
 
 
-          <div class="relighting_image" id="relighting_exp05_r0">
+          <div class="relighting_image_exp" id="relighting_exp05_r0">
             <img src="img/relighting/teaser/exp05/s39_r0.png"/>
           </div>
-          <div class="relighting_image" id="relighting_exp05_g0">
+          <div class="relighting_image_exp" id="relighting_exp05_g0">
             <img src="img/relighting/teaser/exp05/s39_g0.png"/>
           </div>
-          <div class="relighting_image" id="relighting_exp05_b0">
+          <div class="relighting_image_exp" id="relighting_exp05_b0">
             <img src="img/relighting/teaser/exp05/s39_b0.png"/>
           </div>
 
           
+          <div class="relighting_image" id="relighting_exp1_r1">
+            <img src="img/relighting/teaser/exp1/s39_r1.png"/>
+          </div>
+          <div class="relighting_image" id="relighting_exp1_g1">
+            <img src="img/relighting/teaser/exp1/s39_g1.png"/>
+          </div>
+          <div class="relighting_image" id="relighting_exp1_b1">
+            <img src="img/relighting/teaser/exp1/s39_b1.png"/>
+          </div>
 
+
+          <div class="relighting_image_exp" id="relighting_exp05_r1">
+            <img src="img/relighting/teaser/exp05/s39_r1.png"/>
+          </div>
+          <div class="relighting_image_exp" id="relighting_exp05_g1">
+            <img src="img/relighting/teaser/exp05/s39_g1.png"/>
+          </div>
+          <div class="relighting_image_exp" id="relighting_exp05_b1">
+            <img src="img/relighting/teaser/exp05/s39_b1.png"/>
+          </div>
 
         </div>
 
@@ -196,7 +225,11 @@
       // After 3 seconds, remove the show class from DIV
       setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
-    function updateColor0 (color_val) {
+
+
+
+
+    function updateColor (color_val, relighting_id) {
       var r = parseInt(color_val.substr(1,2), 16)
       var g = parseInt(color_val.substr(3,2), 16)
       var b = parseInt(color_val.substr(5,2), 16)
@@ -207,42 +240,28 @@
       b = b / sum
 
       if (r < 0.5){
-        document.getElementById('relighting_exp1_r0').style.opacity = 0;
-        document.getElementById('relighting_exp05_r0').style.opacity = r * 2;
+        document.getElementById('relighting_exp1_r' + relighting_id).style.opacity = 0;
+        document.getElementById('relighting_exp05_r' + relighting_id).style.opacity = r / 0.5;
       } else {
-        document.getElementById('relighting_exp1_r0').style.opacity = r;
-        document.getElementById('relighting_exp05_r0').style.opacity = 0;
+        document.getElementById('relighting_exp1_r' + relighting_id).style.opacity = r - 0.5;
+        document.getElementById('relighting_exp05_r' + relighting_id).style.opacity = 1;
       }
 
       if (g < 0.5){
-        document.getElementById('relighting_exp1_g0').style.opacity = 0;
-        document.getElementById('relighting_exp05_g0').style.opacity = g * 2;
+        document.getElementById('relighting_exp1_g' + relighting_id).style.opacity = 0;
+        document.getElementById('relighting_exp05_g' + relighting_id).style.opacity = g / 0.5;
       } else {
-        document.getElementById('relighting_exp1_g0').style.opacity = g;
-        document.getElementById('relighting_exp05_g0').style.opacity = 0;
+        document.getElementById('relighting_exp1_g' + relighting_id).style.opacity = g - 0.5;
+        document.getElementById('relighting_exp05_g' + relighting_id).style.opacity = 1;
       }
       
       if (b < 0.5){
-        document.getElementById('relighting_exp1_b0').style.opacity = 0;
-        document.getElementById('relighting_exp05_b0').style.opacity = b * 2;
+        document.getElementById('relighting_exp1_b' + relighting_id).style.opacity = 0;
+        document.getElementById('relighting_exp05_b' + relighting_id).style.opacity = b / 0.5;
       } else {
-        document.getElementById('relighting_exp1_b0').style.opacity = b;
-        document.getElementById('relighting_exp05_b0').style.opacity = 0;
+        document.getElementById('relighting_exp1_b' + relighting_id).style.opacity = b - 0.5;
+        document.getElementById('relighting_exp05_b' + relighting_id).style.opacity = 1;
       }
-    }
-    function updateColor1 (color_val) {
-      var r = parseInt(color_val.substr(1,2), 16)
-      var g = parseInt(color_val.substr(3,2), 16)
-      var b = parseInt(color_val.substr(5,2), 16)
-
-      var sum = 255
-      r = r / sum
-      g = g / sum
-      b = b / sum
-
-      document.getElementById('relighting_r1').style.opacity = r;
-      document.getElementById('relighting_g1').style.opacity = g;
-      document.getElementById('relighting_b1').style.opacity = b;
     }
   </script>
 </body>
