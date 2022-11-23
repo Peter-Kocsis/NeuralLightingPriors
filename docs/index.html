@@ -65,17 +65,22 @@
       </div>
     </div>
   </div>
-  <div class="container-xxl text-center my-3 mt-0">
-    <iframe class='video' width='720' height='440' src="https://www.youtube.com/embed/x3sSreTNFw4" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+  <div class="container-xxl">
+    <div class="row justify-content-center">
+      <div class="video-container">
+        <iframe class='video' width='720' height='405' src="https://www.youtube.com/embed/x3sSreTNFw4" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+        </iframe>
+      </div>
+    </div>
   </div>
   <!-- Header End -->
   <!-- Abstract Start -->
   <div class="container-xxl" id="abstract">
     <div class="container">
       <div class="row wow fadeInLeft" data-wow-delay="0.1s">
-        <h1 class="display-32 mb-3">Abstract</h1>
+        <h1 class="display-32 mb-3 mt-4">Abstract</h1>
         We introduce Neural Lighting Priors, a learned surface emission model for indoor room-scale scenes. Given multiview observations as well as the geometry of a scene, we decouple spatially-varying lighting and material parameters. Existing inverse rendering methods typically use hand-crafted emission models or require a large number of views to better constrain the highly ambiguous appearance decomposition task. We aim to overcome these limita- tions by introducing an expressive learned parametric emission model and utilizing semantic information to sufficiently constrain the optimization, thus allowing us to infer light sources, even if they are not visible in the observations. We model the emitted radiance with a neural field parameterized by the emitting direction and a local latent code stored in a voxel grid. At test time, we fit the local latent codes to the scene with a differentiable path tracer that optimizes our reconstruction loss. Our reconstruction allows us to insert virtual objects in a scene and gives us control over the emitters to change their emission color and intensity. Our method requires fewer views than state-of-the-art relighting methods, gives more control, and also improves the relighting quality.
       </div>
     </div>
@@ -117,8 +122,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-2 text-center">
-              <i class="bi bi-arrow-right" style="font-size: 5em"></i>
+            <div class="col-2 text-center h-100">
+              <i class="bi bi-arrow-right" style="font-size: 4vw"></i>
               <h5 class="display-32">Lamp 1 color</h5>
               <div class="row justify-content-center">
                 <input type="color" id="cl_teaser_0" value="#ffffff" oninput="teaser_relighting.updateColor(this.value, 0).bind(teaser_relighting);">
@@ -203,7 +208,7 @@
               </div>
             </div>
             <div class="col-2 text-center">
-              <i class="bi bi-arrow-right" style="font-size: 5em"></i>
+              <i class="bi bi-arrow-right" style="font-size: 4vw"></i>
               <h5 class="display-32">Lamp 1 color</h5>
               <div class="row justify-content-center">
                 <input type="color" id="cl_s50_0" value="#ffffff" oninput="s50_relighting.updateColor(this.value, 0).bind(s50_relighting);">
@@ -285,7 +290,7 @@
                 </div>
               </div>
               <div class="col-2 text-center">
-                <i class="bi bi-arrow-right" style="font-size: 5em"></i>
+                <i class="bi bi-arrow-right" style="font-size: 4vw"></i>
                 <h5 class="display-32">Lamp 1 color</h5>
                 <div class="row justify-content-center">
                   <input type="color" id="cl_inr_0" value="#ffffff" oninput="inr_relighting.updateColor(this.value, 0).bind(inr_relighting);">
