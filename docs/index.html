@@ -23,6 +23,7 @@
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- Template Stylesheet -->
   <link href="css/style.css" rel="stylesheet">
   <!-- Font awesome -->
@@ -34,7 +35,7 @@
 
 <body>
   <!-- Header Start -->
-  <div class="container-fluid bg-light my-6 mt-0" id="home">
+  <div class="container-fluid bg-light mb-2" id="home">
     <div class="container">
       <div class="row justify-content-center">
         <h2 class="display-32 text-center mt-5 mb-3">Neural Lighting Priors for Indoor Scenes</h2>
@@ -59,10 +60,15 @@
           <i class="bi bi-file-earmark-text" style="font-size: 2em"></i><br>Paper - Coming soon</div>
         <div class="col-lg-2 text-center">
           <i class="bi bi-github" style="font-size: 2em"></i><br>Code - Coming soon </div>
-        <div class="col-lg-2 text-center mb-5">
+        <div class="col-lg-2 text-center mb-3">
           <i class="fa fa-solid fa-database mb-2 mt-2" style="font-size: 2em"></i><br>Data - Coming soon </div>
       </div>
     </div>
+  </div>
+  <div class="container-xxl text-center my-3 mt-0">
+    <iframe class='video' width='720' height='440' src="https://www.youtube.com/embed/x3sSreTNFw4" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
   </div>
   <!-- Header End -->
   <!-- Abstract Start -->
@@ -100,83 +106,174 @@
     <div class="container">
       <div class="row wow fadeInLeft" data-wow-delay="0.5s">
         <h1 class="display-32">Results</h1>
+        
+        <div class="container mt-3" id="rl_s39">
+          <h2 class="display-32">Light Editing and Virtual Object Insertion</h1>
+          <div class="row justify-content-center">
+            <div class="col-5">
+              <h5 class="display-32 text-center">Original image</h1>
+              <div class="relighting_container" id="relighting_container">
+                <div class="relighting_image_original" id="relighting_input">
+                  <img src="img/relighting/teaser/s39.jpg"/>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 text-center">
+              <i class="bi bi-arrow-right" style="font-size: 5em"></i>
+              <h5 class="display-32">Lamp 1 color</h5>
+              <div class="row justify-content-center">
+                <input type="color" id="cl_teaser_0" value="#ffffff" oninput="teaser_relighting.updateColor(this.value, '0').bind(teaser_relighting);">
+              </div>
+              <br>
+              <h5 class="display-32">Lamp 2 color</h5>
+              <div class="row justify-content-center">
+                <input type="color" id="cl_teaser_1" value="#ffffff" oninput="teaser_relighting.updateColor(this.value, '1').bind(teaser_relighting);"> 
+              </div>
+              <br>
+              <div class="custom-control custom-switch text-left">
+                <input class="custom-control-input" type="checkbox" id="cb_teaser_voi" oninput="teaser_relighting.updateVOI(this.checked).bind(teaser_relighting);">
+                <label class="custom-control-label" for="cb_teaser_voi">
+                  Virtual object
+                </label>
+              </div>
+              <br>
+              <br>
+              <div class="custom-control custom-switch text-left">
+                <input class="custom-control-input" type="checkbox" id="cb_teaser_rl" checked oninput="teaser_relighting.setRL =this.checked;">
+                <label class="custom-control-label" for="cb_teaser_rl">
+                  Automatic relighting
+                </label>
+              </div>
+            </div>
+            <div class="col-5">
+              <h5 class="display-32 text-center">Modified image</h5>
+              <div class="relighting_container" id="relighting_container">
+                <div class="relighting_image" id="relighting_s39_exp1_r0">
+                  <img src="img/relighting/teaser/no_voi/exp1/s39_r0.jpg"/>
+                </div>
+                <div class="relighting_image" id="relighting_s39_exp1_g0">
+                  <img src="img/relighting/teaser/no_voi/exp1/s39_g0.jpg"/>
+                </div>
+                <div class="relighting_image" id="relighting_s39_exp1_b0">
+                  <img src="img/relighting/teaser/no_voi/exp1/s39_b0.jpg"/>
+                </div>
 
-        <h2 class="display-32">Light Editing and Virtual Object Insertion</h1>
-        <div class="row justify-content-center">
-          <div class="col-5">
-            <h5 class="display-32 text-center">Input image</h1>
-            <div class="relighting_container" id="relighting_container">
-              <div class="relighting_image" id="relighting_input">
-                <img src="img/relighting/teaser/s39.jpg"/>
+
+                <div class="relighting_image_exp" id="relighting_s39_exp05_r0">
+                  <img src="img/relighting/teaser/no_voi/exp05/s39_r0.jpg"/>
+                </div>
+                <div class="relighting_image_exp" id="relighting_s39_exp05_g0">
+                  <img src="img/relighting/teaser/no_voi/exp05/s39_g0.jpg"/>
+                </div>
+                <div class="relighting_image_exp" id="relighting_s39_exp05_b0">
+                  <img src="img/relighting/teaser/no_voi/exp05/s39_b0.jpg"/>
+                </div>
+
+                
+                <div class="relighting_image" id="relighting_s39_exp1_r1">
+                  <img src="img/relighting/teaser/no_voi/exp1/s39_r1.jpg"/>
+                </div>
+                <div class="relighting_image" id="relighting_s39_exp1_g1">
+                  <img src="img/relighting/teaser/no_voi/exp1/s39_g1.jpg"/>
+                </div>
+                <div class="relighting_image" id="relighting_s39_exp1_b1">
+                  <img src="img/relighting/teaser/no_voi/exp1/s39_b1.jpg"/>
+                </div>
+
+
+                <div class="relighting_image_exp" id="relighting_s39_exp05_r1">
+                  <img src="img/relighting/teaser/no_voi/exp05/s39_r1.jpg"/>
+                </div>
+                <div class="relighting_image_exp" id="relighting_s39_exp05_g1">
+                  <img src="img/relighting/teaser/no_voi/exp05/s39_g1.jpg"/>
+                </div>
+                <div class="relighting_image_exp" id="relighting_s39_exp05_b1">
+                  <img src="img/relighting/teaser/no_voi/exp05/s39_b1.jpg"/>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-2 text-center">
-            <i class="bi bi-arrow-right" style="font-size: 5em"></i>
-            <h5 class="display-32">Lamp 1 color</h5>
+        </div>
+
+        <div class="container mt-3" id="rl_inr">
+          <h2 class="display-32">Real-World Light Editing</h1>
             <div class="row justify-content-center">
-              <input type="color" id="color0" value="#ffffff" oninput="updateColor(this.value, '0');">
+              <div class="col-5">
+                <h5 class="display-32 text-center">Original image</h1>
+                <div class="relighting_container" id="relighting_container">
+                  <div class="relighting_image_original" id="relighting_input">
+                    <img src="img/relighting/inr/inr.jpg"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-2 text-center">
+                <i class="bi bi-arrow-right" style="font-size: 5em"></i>
+                <h5 class="display-32">Lamp 1 color</h5>
+                <div class="row justify-content-center">
+                  <input type="color" id="color0" value="#ffffff" oninput="inr_relighting.updateColor(this.value, '0_inr').bind(inr_relighting);">
+                </div>
+                <br>
+                <h5 class="display-32">Lamp 2 color</h5>
+                <div class="row justify-content-center">
+                  <input type="color" id="color1" value="#ffffff" oninput="inr_relighting.updateColor(this.value, '1_inr').bind(inr_relighting);"> 
+                </div>
+                <br>
+                <br>
+                <div class="custom-control custom-switch text-left">
+                  <input class="custom-control-input" type="checkbox" id="cb_inr_rl" checked oninput="inr_relighting.setRL = this.checked;">
+                  <label class="custom-control-label" for="cb_inr_rl">
+                    Automatic relighting
+                  </label>
+                </div>
+              </div>
+              <div class="col-5">
+                <h5 class="display-32 text-center">Modified image</h5>
+                <div class="relighting_container" id="relighting_container">
+                  <div class="relighting_image" id="relighting_inr_exp1_r0">
+                    <img src="img/relighting/inr/exp1/rl_inr_r0.jpg"/>
+                  </div>
+                  <div class="relighting_image" id="relighting_inr_exp1_g0">
+                    <img src="img/relighting/inr/exp1/rl_inr_g0.jpg"/>
+                  </div>
+                  <div class="relighting_image" id="relighting_inr_exp1_b0">
+                    <img src="img/relighting/inr/exp1/rl_inr_b0.jpg"/>
+                  </div>
+  
+  
+                  <div class="relighting_image_exp" id="relighting_inr_exp05_r0">
+                    <img src="img/relighting/inr/exp05/rl_inr_r0.jpg"/>
+                  </div>
+                  <div class="relighting_image_exp" id="relighting_inr_exp05_g0">
+                    <img src="img/relighting/inr/exp05/rl_inr_g0.jpg"/>
+                  </div>
+                  <div class="relighting_image_exp" id="relighting_inr_exp05_b0">
+                    <img src="img/relighting/inr/exp05/rl_inr_b0.jpg"/>
+                  </div>
+  
+                  
+                  <div class="relighting_image" id="relighting_inr_exp1_r1">
+                    <img src="img/relighting/inr/exp1/rl_inr_r1.jpg"/>
+                  </div>
+                  <div class="relighting_image" id="relighting_inr_exp1_g1">
+                    <img src="img/relighting/inr/exp1/rl_inr_g1.jpg"/>
+                  </div>
+                  <div class="relighting_image" id="relighting_inr_exp1_b1">
+                    <img src="img/relighting/inr/exp1/rl_inr_b1.jpg"/>
+                  </div>
+  
+  
+                  <div class="relighting_image_exp" id="relighting_inr_exp05_r1">
+                    <img src="img/relighting/inr/exp05/rl_inr_r1.jpg"/>
+                  </div>
+                  <div class="relighting_image_exp" id="relighting_inr_exp05_g1">
+                    <img src="img/relighting/inr/exp05/rl_inr_g1.jpg"/>
+                  </div>
+                  <div class="relighting_image_exp" id="relighting_inr_exp05_b1">
+                    <img src="img/relighting/inr/exp05/rl_inr_b1.jpg"/>
+                  </div>
+                </div>
+              </div>
             </div>
-            <br>
-            <h5 class="display-32">Lamp 2 color</h5>
-            <div class="row justify-content-center">
-              <input type="color" id="color1" value="#ffffff" oninput="updateColor(this.value, '1');"> 
-            </div>
-            <br>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" oninput="updateVOI(this.checked);">
-              <label class="form-check-label" for="flexSwitchCheckDefault">
-                Add virtual object
-              </label>
-            </div>
-          </div>
-          <div class="col-5">
-            <h5 class="display-32 text-center">Modified image</h5>
-            <div class="relighting_container" id="relighting_container">
-              <div class="relighting_image" id="relighting_exp1_r0">
-                <img src="img/relighting/teaser/no_voi/exp1/s39_r0.jpg"/>
-              </div>
-              <div class="relighting_image" id="relighting_exp1_g0">
-                <img src="img/relighting/teaser/no_voi/exp1/s39_g0.jpg"/>
-              </div>
-              <div class="relighting_image" id="relighting_exp1_b0">
-                <img src="img/relighting/teaser/no_voi/exp1/s39_b0.jpg"/>
-              </div>
-
-
-              <div class="relighting_image_exp" id="relighting_exp05_r0">
-                <img src="img/relighting/teaser/no_voi/exp05/s39_r0.jpg"/>
-              </div>
-              <div class="relighting_image_exp" id="relighting_exp05_g0">
-                <img src="img/relighting/teaser/no_voi/exp05/s39_g0.jpg"/>
-              </div>
-              <div class="relighting_image_exp" id="relighting_exp05_b0">
-                <img src="img/relighting/teaser/no_voi/exp05/s39_b0.jpg"/>
-              </div>
-
-              
-              <div class="relighting_image" id="relighting_exp1_r1">
-                <img src="img/relighting/teaser/no_voi/exp1/s39_r1.jpg"/>
-              </div>
-              <div class="relighting_image" id="relighting_exp1_g1">
-                <img src="img/relighting/teaser/no_voi/exp1/s39_g1.jpg"/>
-              </div>
-              <div class="relighting_image" id="relighting_exp1_b1">
-                <img src="img/relighting/teaser/no_voi/exp1/s39_b1.jpg"/>
-              </div>
-
-
-              <div class="relighting_image_exp" id="relighting_exp05_r1">
-                <img src="img/relighting/teaser/no_voi/exp05/s39_r1.jpg"/>
-              </div>
-              <div class="relighting_image_exp" id="relighting_exp05_g1">
-                <img src="img/relighting/teaser/no_voi/exp05/s39_g1.jpg"/>
-              </div>
-              <div class="relighting_image_exp" id="relighting_exp05_b1">
-                <img src="img/relighting/teaser/no_voi/exp05/s39_b1.jpg"/>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -189,11 +286,11 @@
         <h1 class="display-32">Citation</h1>
         <div class="col-lg-6">
           @misc{kocsis2022neurallightingpriors,<br>
-            title={Neural Lighting Priors for Indoor Scenes},<br>
-            author={Peter Kocsis<br>
-                    and Vincent Sitzmann<br>
-                    and Matthias Nie{\ss}ner},<br>
-            year={2022}}
+            &emsp;&ensp;title={Neural Lighting Priors for Indoor Scenes},<br>
+            &emsp;&ensp;author={Peter Kocsis<br>
+              &emsp;&emsp;&emsp;&ensp;and Vincent Sitzmann<br>
+              &emsp;&emsp;&emsp;&ensp;and Matthias Nie{\ss}ner},<br>
+              &emsp;&ensp;year={2022}}
         </div>
         <div class="col-lg-2">
           <button onclick="copy_text()" type="button" class="btn btn-light"><i class="fa fa-regular fa-copy" style="font-size: 2em"></i> Copy citation</button>
@@ -237,168 +334,169 @@
       setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
 
+    class Relighting{
+      constructor(div_id){
+        this.idleTime = 0;
+        this.automatic_relighting_active = true;
+        this.color_picker_opened = false; 
 
+        this.relighting_direction = new Proxy({}, {
+          get: (target, name) => name in target ? target[name] : 1
+        })
 
+        this.rl_images_array = Array.from(document.getElementById(div_id).getElementsByClassName('relighting_image'))
+        this.rl_exp_images_array = Array.from(document.getElementById(div_id).getElementsByClassName('relighting_image_exp'))
 
-    function updateColor (color_val, relighting_id) {
-      var r = parseInt(color_val.substr(1,2), 16)
-      var g = parseInt(color_val.substr(3,2), 16)
-      var b = parseInt(color_val.substr(5,2), 16)
-
-      var sum = 255
-      r = r / sum
-      g = g / sum
-      b = b / sum
-
-      if (r < 0.5){
-        document.getElementById('relighting_exp1_r' + relighting_id).style.opacity = 0;
-        document.getElementById('relighting_exp05_r' + relighting_id).style.opacity = r / 0.5;
-      } else {
-        document.getElementById('relighting_exp1_r' + relighting_id).style.opacity = r - 0.5;
-        document.getElementById('relighting_exp05_r' + relighting_id).style.opacity = 1;
-      }
-
-      if (g < 0.5){
-        document.getElementById('relighting_exp1_g' + relighting_id).style.opacity = 0;
-        document.getElementById('relighting_exp05_g' + relighting_id).style.opacity = g / 0.5;
-      } else {
-        document.getElementById('relighting_exp1_g' + relighting_id).style.opacity = g - 0.5;
-        document.getElementById('relighting_exp05_g' + relighting_id).style.opacity = 1;
-      }
-      
-      if (b < 0.5){
-        document.getElementById('relighting_exp1_b' + relighting_id).style.opacity = 0;
-        document.getElementById('relighting_exp05_b' + relighting_id).style.opacity = b / 0.5;
-      } else {
-        document.getElementById('relighting_exp1_b' + relighting_id).style.opacity = b - 0.5;
-        document.getElementById('relighting_exp05_b' + relighting_id).style.opacity = 1;
-      }
-    }
-
-    function updateVOI(voi_val) {
-      var timestamp = new Date().getTime();   
-      var queryString = "?t=" + timestamp;      
-      if (voi_val){
-        document.getElementById('relighting_exp1_r0').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp1/s39_r0.jpg" + queryString;
-        document.getElementById('relighting_exp1_g0').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp1/s39_g0.jpg" + queryString;
-        document.getElementById('relighting_exp1_b0').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp1/s39_b0.jpg" + queryString;
-
-        document.getElementById('relighting_exp05_r0').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp05/s39_r0.jpg" + queryString;
-        document.getElementById('relighting_exp05_g0').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp05/s39_g0.jpg" + queryString;
-        document.getElementById('relighting_exp05_b0').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp05/s39_b0.jpg" + queryString;
-
-
-        document.getElementById('relighting_exp1_r1').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp1/s39_r1.jpg" + queryString;
-        document.getElementById('relighting_exp1_g1').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp1/s39_g1.jpg" + queryString;
-        document.getElementById('relighting_exp1_b1').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp1/s39_b1.jpg" + queryString;
-
-        document.getElementById('relighting_exp05_r1').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp05/s39_r1.jpg" + queryString;
-        document.getElementById('relighting_exp05_g1').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp05/s39_g1.jpg" + queryString;
-        document.getElementById('relighting_exp05_b1').getElementsByTagName('img')[0].src="img/relighting/teaser/voi/exp05/s39_b1.jpg" + queryString;
-      } else{
-        document.getElementById('relighting_exp1_r0').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp1/s39_r0.jpg" + queryString;
-        document.getElementById('relighting_exp1_g0').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp1/s39_g0.jpg" + queryString;
-        document.getElementById('relighting_exp1_b0').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp1/s39_b0.jpg" + queryString;
-
-        document.getElementById('relighting_exp05_r0').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp05/s39_r0.jpg" + queryString;
-        document.getElementById('relighting_exp05_g0').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp05/s39_g0.jpg" + queryString;
-        document.getElementById('relighting_exp05_b0').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp05/s39_b0.jpg" + queryString;
-
-
-        document.getElementById('relighting_exp1_r1').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp1/s39_r1.jpg" + queryString;
-        document.getElementById('relighting_exp1_g1').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp1/s39_g1.jpg" + queryString;
-        document.getElementById('relighting_exp1_b1').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp1/s39_b1.jpg" + queryString;
-
-        document.getElementById('relighting_exp05_r1').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp05/s39_r1.jpg" + queryString;
-        document.getElementById('relighting_exp05_g1').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp05/s39_g1.jpg" + queryString;
-        document.getElementById('relighting_exp05_b1').getElementsByTagName('img')[0].src="img/relighting/teaser/no_voi/exp05/s39_b1.jpg" + queryString;
-      }
-    }
-  </script>
-  <script type="text/javascript">
-    var idleTime = 0;
-    $(document).ready(function () {
-        // Increment the idle time counter every minute.
-        var idleInterval = setInterval(timerIncrement, 100); // 1 minute
+        var idleInterval = setInterval(this.timerIncrement.bind(this), 100); // 1 minute
 
         // Zero the idle timer on mouse movement.
-        $(this).mousemove(function (e) {
-          idleTime = 0;
-        });
-        $(this).keypress(function (e) {
-            idleTime = 0;
-        });
-        $(this).click(function (e) {
-          idleTime = 0;
-        });
-    });
+        $(document).mousemove(function (e) {
+          this.idleTime = 0;
+        }.bind(this));
+        $(document).keypress(function (e) {
+          this.idleTime = 0;
+        }.bind(this));
+        $(document).click(function (e) {
+          this.idleTime = 0;
+        }.bind(this));
 
-    function timerIncrement() {
-        idleTime = idleTime + 1;
-        if (idleTime > 40) { // 5 seconds
-          animate_relighting(1, 5);
-          animate_relighting(0, 10);
+        this.color_array = Array.from(document.getElementById(div_id).querySelectorAll('input[type=color]'))
+        this.color_array.forEach(function (item, index) {
+          item.addEventListener('click', this.on_colorpicker_click.bind(this))
+          item.addEventListener('change', this.on_colorpicker_click.bind(this));
+        }.bind(this));
+      }
+
+      set setRL(rl_val){
+        this.automatic_relighting_active = rl_val;
+      }
+
+      on_colorpicker_click(){
+          this.color_picker_opened = !this.color_picker_opened
+          };
+
+      timerIncrement(){
+        if (this.automatic_relighting_active && !this.color_picker_opened){
+          this.idleTime = this.idleTime + 1;
+          if (this.idleTime > 40) { // 5 seconds
+            this.animate_relighting(0, 10);
+            this.animate_relighting(1, 5);
+          }
         }
+      }
+
+      animate_relighting(lamp_id, step) {
+        const rgb2hex = (rgb) => `#${rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(n => parseInt(n, 10).toString(16).padStart(2, '0')).join('')}`
+
+        var el_color = this.color_array[lamp_id]
+        var color_val = el_color.value
+        
+        var r = parseInt(color_val.substr(1,2), 16)
+        var g = parseInt(color_val.substr(3,2), 16)
+        var b = parseInt(color_val.substr(5,2), 16)
+
+        const min_limit = 30
+        const max_limit = 220
+
+        if (r < min_limit){
+          r = Math.min(min_limit, r + step)
+        }
+        else if (max_limit < r){
+          r = Math.max(r - step, max_limit)
+        }
+        else if (g < min_limit){
+          g = Math.min(min_limit, g + step)
+        }
+        else if (max_limit < g){
+          g = Math.max(g - step, max_limit)
+        }
+        else if (b < min_limit){
+          b = Math.min(min_limit, b + step)
+        }
+        else if (max_limit < b){
+          b = Math.max(b - step, max_limit)
+        }
+        else if (r == max_limit && g == max_limit && b == max_limit){
+          this.relighting_direction[lamp_id] = -1
+          r = r + this.relighting_direction[lamp_id] * step
+        }
+        else if (r == min_limit && g == min_limit && b == min_limit){
+          this.relighting_direction[lamp_id] = 1
+          r = r + this.relighting_direction[lamp_id] * step
+        }
+        else if ((r != min_limit && this.relighting_direction[lamp_id] == -1) || (r != max_limit && this.relighting_direction[lamp_id] == 1)) {
+          r = Math.max(Math.min(r + this.relighting_direction[lamp_id] * step, max_limit), min_limit)
+        }
+        else if ((g != min_limit && this.relighting_direction[lamp_id] == -1) || (g != max_limit && this.relighting_direction[lamp_id] == 1)) {
+          g = Math.max(Math.min(g + this.relighting_direction[lamp_id] * step, max_limit), min_limit)
+        }
+        else if ((b != min_limit && this.relighting_direction[lamp_id] == -1) || (b != max_limit && this.relighting_direction[lamp_id] == 1)) {
+          b = Math.max(Math.min(b + this.relighting_direction[lamp_id] * step, max_limit), min_limit)
+        }      
+        var rgb = 'rgb(' + r + ',' + g + ',' + b + ')'
+        
+        el_color.value = rgb2hex(rgb)
+        this.updateColor(el_color.value, lamp_id)
+      }
+
+      updateColor(color_val, lamp_id) {
+        var r = parseInt(color_val.substr(1,2), 16)
+        var g = parseInt(color_val.substr(3,2), 16)
+        var b = parseInt(color_val.substr(5,2), 16)
+
+        var sum = 255
+        r = r / sum
+        g = g / sum
+        b = b / sum
+
+        if (r < 0.5){
+          this.rl_images_array[3*lamp_id + 0].style.opacity = 0;
+          this.rl_exp_images_array[3*lamp_id + 0].style.opacity = r / 0.5;
+        } else {
+          this.rl_images_array[3*lamp_id + 0].style.opacity = r - 0.5;
+          this.rl_exp_images_array[3*lamp_id + 0].style.opacity = 1;
+        }
+
+        if (g < 0.5){
+          this.rl_images_array[3*lamp_id + 1].style.opacity = 0;
+          this.rl_exp_images_array[3*lamp_id + 1].style.opacity = g / 0.5;
+        } else {
+          this.rl_images_array[3*lamp_id + 1].style.opacity = g - 0.5;
+          this.rl_exp_images_array[3*lamp_id + 1].style.opacity = 1;
+        }
+        
+        if (b < 0.5){
+          this.rl_images_array[3*lamp_id + 2].style.opacity = 0;
+          this.rl_exp_images_array[3*lamp_id + 2].style.opacity = b / 0.5;
+        } else {
+          this.rl_images_array[3*lamp_id + 2].style.opacity = b - 0.5;
+          this.rl_exp_images_array[3*lamp_id + 2].style.opacity = 1;
+        }
+      }
+
+      updateVOI(voi_val) {
+        var timestamp = new Date().getTime();   
+        var queryString = "?t=" + timestamp;      
+        if (voi_val){
+          this.rl_images_array.forEach(function (item, index) {
+            item.getElementsByTagName('img')[0].src=item.getElementsByTagName('img')[0].src.replace("no_voi", "voi");
+          }.bind(this));
+          this.rl_exp_images_array.forEach(function (item, index) {
+            item.getElementsByTagName('img')[0].src=item.getElementsByTagName('img')[0].src.replace("no_voi", "voi");
+          }.bind(this));
+        } else{
+          this.rl_images_array.forEach(function (item, index) {
+            item.getElementsByTagName('img')[0].src=item.getElementsByTagName('img')[0].src.replace("voi", "no_voi");
+          }.bind(this));
+          this.rl_exp_images_array.forEach(function (item, index) {
+            item.getElementsByTagName('img')[0].src=item.getElementsByTagName('img')[0].src.replace("voi", "no_voi");
+          }.bind(this));
+        }
+      }
     }
 
-    var relighting_direction = new Proxy({}, {
-      get: (target, name) => name in target ? target[name] : 1
-    })
-    function animate_relighting(lamp_id, step) {
-      const rgb2hex = (rgb) => `#${rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(n => parseInt(n, 10).toString(16).padStart(2, '0')).join('')}`
-
-      var el_color0 = document.getElementById('color' + lamp_id)
-      
-      var color_val = el_color0.value
-      
-
-      var r = parseInt(color_val.substr(1,2), 16)
-      var g = parseInt(color_val.substr(3,2), 16)
-      var b = parseInt(color_val.substr(5,2), 16)
-
-      const min_limit = 30
-      const max_limit = 220
-
-      if (r < min_limit){
-        r = Math.min(min_limit, r + step)
-      }
-      else if (max_limit < r){
-        r = Math.max(r - step, max_limit)
-      }
-      else if (g < min_limit){
-        g = Math.min(min_limit, g + step)
-      }
-      else if (max_limit < g){
-        g = Math.max(g - step, max_limit)
-      }
-      else if (b < min_limit){
-        b = Math.min(min_limit, b + step)
-      }
-      else if (max_limit < b){
-        b = Math.max(b - step, max_limit)
-      }
-      else if (r == max_limit && g == max_limit && b == max_limit){
-        relighting_direction[lamp_id] = -1
-        r = r + relighting_direction[lamp_id] * step
-      }
-      else if (r == min_limit && g == min_limit && b == min_limit){
-        relighting_direction[lamp_id] = 1
-        r = r + relighting_direction[lamp_id] * step
-      }
-      else if ((r != min_limit && relighting_direction[lamp_id] == -1) || (r != max_limit && relighting_direction[lamp_id] == 1)) {
-        r = Math.max(Math.min(r + relighting_direction[lamp_id] * step, max_limit), min_limit)
-      }
-      else if ((g != min_limit && relighting_direction[lamp_id] == -1) || (g != max_limit && relighting_direction[lamp_id] == 1)) {
-        g = Math.max(Math.min(g + relighting_direction[lamp_id] * step, max_limit), min_limit)
-      }
-      else if ((b != min_limit && relighting_direction[lamp_id] == -1) || (b != max_limit && relighting_direction[lamp_id] == 1)) {
-        b = Math.max(Math.min(b + relighting_direction[lamp_id] * step, max_limit), min_limit)
-      }      
-
-      rgb = 'rgb(' + r + ',' + g + ',' + b + ')'
-      el_color0.value = rgb2hex(rgb)
-      updateColor(el_color0.value, lamp_id)
-    }
+    var teaser_relighting = new Relighting("rl_s39");    
+    var inr_relighting = new Relighting("rl_inr");    
   </script>
 </body>
 
