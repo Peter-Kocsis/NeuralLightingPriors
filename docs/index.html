@@ -75,9 +75,8 @@
   <div class="container-xxl" id="abstract">
     <div class="container">
       <div class="row wow fadeInLeft" data-wow-delay="0.1s">
-        <h1 class="display-32">Abstract</h1>
+        <h1 class="display-32 mb-3">Abstract</h1>
         We introduce Neural Lighting Priors, a learned surface emission model for indoor room-scale scenes. Given multiview observations as well as the geometry of a scene, we decouple spatially-varying lighting and material parameters. Existing inverse rendering methods typically use hand-crafted emission models or require a large number of views to better constrain the highly ambiguous appearance decomposition task. We aim to overcome these limita- tions by introducing an expressive learned parametric emission model and utilizing semantic information to sufficiently constrain the optimization, thus allowing us to infer light sources, even if they are not visible in the observations. We model the emitted radiance with a neural field parameterized by the emitting direction and a local latent code stored in a voxel grid. At test time, we fit the local latent codes to the scene with a differentiable path tracer that optimizes our reconstruction loss. Our reconstruction allows us to insert virtual objects in a scene and gives us control over the emitters to change their emission color and intensity. Our method requires fewer views than state-of-the-art relighting methods, gives more control, and also improves the relighting quality.
-        <img src="img/teaser.jpg" alt="Neural Lighting Priors" />
       </div>
     </div>
   </div>
@@ -87,16 +86,14 @@
   <div class="container-xxl mt-5" id="method">
     <div class="container">
       <div class="row wow fadeInRight" data-wow-delay="0.5s">
-        <h1 class="display-32">Method</h1>
+        <h1 class="display-32 mb-3">Method</h1>
+        <img src="img/teaser.jpg" alt="Neural Lighting Priors" />
 
-        <h2 class="display-32 mt-3">Neural Lighting</h2>
-        TODO
+        <h2 class="display-32 mt-3 mb-3">Neural Lighting Representation</h2>
+        We propose to represent the surface emission with a locally conditioned neural field. The conditioning values are stored in a voxel grid. Our approach combines the expressiveness of a neural field with the explicit representation of a voxel grid, giving us control over the lighting. We use path tracing to render the scene. To reduce the rendering noise, we develop a voxel-based emitter sampling strategy for our lighting representation. 
 
-        <h2 class="display-32 mt-3">Prior Learning</h2>
-        TODO
-      
-        <h2 class="display-32 mt-3">Voxel-based Emitter Sampling</h2>
-        TODO
+        <h2 class="display-32 mt-3 mb-3">Prior Learning</h2>
+        Decomposing the appearance into lighting and material parameters is an ill-posed problem. Previous methods have used hand-crafted regularizers and emission models to constrain this optimization problem. We propose to learn priors from synthetically generated data to better constrain this task. We render a large-scale dataset to train a parametric emission model, wich can be fit to unseen scenes. We utilize semantical information predicted from the geometry to further constrain our network.       
       </div>
     </div>
   </div>
@@ -105,11 +102,13 @@
   <div class="container-xxl mt-5" id="results">
     <div class="container">
       <div class="row wow fadeInLeft" data-wow-delay="0.5s">
-        <h1 class="display-32">Results</h1>
+        <h1 class="display-32">Interactive Results</h1>
+        Our method enables us to reconstruct light sources with high fidelity and gives control over their color and intensity. Furthermore, the reconstructed light sources allow us to photo-realistically insert virtual object into the scene. 
         
-        <div class="container mt-3" id="rl_s39">
-          <h2 class="display-32">Light Editing and Virtual Object Insertion</h1>
-          <div class="row justify-content-center">
+        <div class="container mt-3">
+          <h2 class="display-32">Light Editing and Virtual Object Insertion</h2>
+          
+          <div class="row justify-content-center" id="rl_s39">
             <div class="col-5">
               <h5 class="display-32 text-center">Original image</h1>
               <div class="relighting_container" id="relighting_container">
@@ -122,12 +121,12 @@
               <i class="bi bi-arrow-right" style="font-size: 5em"></i>
               <h5 class="display-32">Lamp 1 color</h5>
               <div class="row justify-content-center">
-                <input type="color" id="cl_teaser_0" value="#ffffff" oninput="teaser_relighting.updateColor(this.value, '0').bind(teaser_relighting);">
+                <input type="color" id="cl_teaser_0" value="#ffffff" oninput="teaser_relighting.updateColor(this.value, 0).bind(teaser_relighting);">
               </div>
               <br>
               <h5 class="display-32">Lamp 2 color</h5>
               <div class="row justify-content-center">
-                <input type="color" id="cl_teaser_1" value="#ffffff" oninput="teaser_relighting.updateColor(this.value, '1').bind(teaser_relighting);"> 
+                <input type="color" id="cl_teaser_1" value="#ffffff" oninput="teaser_relighting.updateColor(this.value, 1).bind(teaser_relighting);"> 
               </div>
               <br>
               <div class="custom-control custom-switch text-left">
@@ -141,7 +140,7 @@
               <div class="custom-control custom-switch text-left">
                 <input class="custom-control-input" type="checkbox" id="cb_teaser_rl" checked oninput="teaser_relighting.setRL =this.checked;">
                 <label class="custom-control-label" for="cb_teaser_rl">
-                  Automatic relighting
+                  Auto relighting
                 </label>
               </div>
             </div>
@@ -193,13 +192,92 @@
               </div>
             </div>
           </div>
+
+          <div class="row justify-content-center" id="rl_s50">
+            <div class="col-5">
+              <h5 class="display-32 text-center">Original image</h1>
+              <div class="relighting_container" id="relighting_container">
+                <div class="relighting_image_original" id="relighting_input">
+                  <img src="img/relighting/s50/s50.jpg"/>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 text-center">
+              <i class="bi bi-arrow-right" style="font-size: 5em"></i>
+              <h5 class="display-32">Lamp 1 color</h5>
+              <div class="row justify-content-center">
+                <input type="color" id="cl_s50_0" value="#ffffff" oninput="s50_relighting.updateColor(this.value, 0).bind(s50_relighting);">
+              </div>
+              <br>
+              <h5 class="display-32">Lamp 2 color</h5>
+              <div class="row justify-content-center">
+                <input type="color" id="cl_s50_1" value="#ffffff" oninput="s50_relighting.updateColor(this.value, 1).bind(s50_relighting);"> 
+              </div>
+              <br>
+              <br>
+              <br>
+              <div class="custom-control custom-switch text-left">
+                <input class="custom-control-input" type="checkbox" id="cb_s50_rl" checked oninput="s50_relighting.setRL =this.checked;">
+                <label class="custom-control-label" for="cb_s50_rl">
+                  Auto relighting
+                </label>
+              </div>
+            </div>
+            <div class="col-5">
+              <h5 class="display-32 text-center">Modified image</h5>
+              <div class="relighting_container" id="relighting_container">
+                <div class="relighting_image" id="relighting_s50_exp1_r0">
+                  <img src="img/relighting/s50/exp1/rl_s50_nl_r0.jpg"/>
+                </div>
+                <div class="relighting_image" id="relighting_s50_exp1_g0">
+                  <img src="img/relighting/s50/exp1/rl_s50_nl_g0.jpg"/>
+                </div>
+                <div class="relighting_image" id="relighting_s50_exp1_b0">
+                  <img src="img/relighting/s50/exp1/rl_s50_nl_b0.jpg"/>
+                </div>
+
+
+                <div class="relighting_image_exp" id="relighting_s50_exp05_r0">
+                  <img src="img/relighting/s50/exp05/rl_s50_nl_r0.jpg"/>
+                </div>
+                <div class="relighting_image_exp" id="relighting_s50_exp05_g0">
+                  <img src="img/relighting/s50/exp05/rl_s50_nl_g0.jpg"/>
+                </div>
+                <div class="relighting_image_exp" id="relighting_s50_exp05_b0">
+                  <img src="img/relighting/s50/exp05/rl_s50_nl_b0.jpg"/>
+                </div>
+
+                
+                <div class="relighting_image" id="relighting_s50_exp1_r1">
+                  <img src="img/relighting/s50/exp1/rl_s50_nl_r1.jpg"/>
+                </div>
+                <div class="relighting_image" id="relighting_s50_exp1_g1">
+                  <img src="img/relighting/s50/exp1/rl_s50_nl_g1.jpg"/>
+                </div>
+                <div class="relighting_image" id="relighting_s50_exp1_b1">
+                  <img src="img/relighting/s50/exp1/rl_s50_nl_b1.jpg"/>
+                </div>
+
+
+                <div class="relighting_image_exp" id="relighting_s50_exp05_r1">
+                  <img src="img/relighting/s50/exp05/rl_s50_nl_r1.jpg"/>
+                </div>
+                <div class="relighting_image_exp" id="relighting_s50_exp05_g1">
+                  <img src="img/relighting/s50/exp05/rl_s50_nl_g1.jpg"/>
+                </div>
+                <div class="relighting_image_exp" id="relighting_s50_exp05_b1">
+                  <img src="img/relighting/s50/exp05/rl_s50_nl_b1.jpg"/>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="container mt-3" id="rl_inr">
-          <h2 class="display-32">Real-World Light Editing</h1>
-            <div class="row justify-content-center">
+        <div class="container mt-3">
+          <h2 class="display-32">Real-World Light Editing</h2>
+            <div class="row justify-content-center" id="rl_inr">
               <div class="col-5">
-                <h5 class="display-32 text-center">Original image</h1>
+                <h5 class="display-32 text-center">Original image</h5>
                 <div class="relighting_container" id="relighting_container">
                   <div class="relighting_image_original" id="relighting_input">
                     <img src="img/relighting/inr/inr.jpg"/>
@@ -210,19 +288,19 @@
                 <i class="bi bi-arrow-right" style="font-size: 5em"></i>
                 <h5 class="display-32">Lamp 1 color</h5>
                 <div class="row justify-content-center">
-                  <input type="color" id="color0" value="#ffffff" oninput="inr_relighting.updateColor(this.value, '0_inr').bind(inr_relighting);">
+                  <input type="color" id="cl_inr_0" value="#ffffff" oninput="inr_relighting.updateColor(this.value, 0).bind(inr_relighting);">
                 </div>
                 <br>
                 <h5 class="display-32">Lamp 2 color</h5>
                 <div class="row justify-content-center">
-                  <input type="color" id="color1" value="#ffffff" oninput="inr_relighting.updateColor(this.value, '1_inr').bind(inr_relighting);"> 
+                  <input type="color" id="cl_inr_1" value="#ffffff" oninput="inr_relighting.updateColor(this.value, 1).bind(inr_relighting);"> 
                 </div>
                 <br>
                 <br>
                 <div class="custom-control custom-switch text-left">
                   <input class="custom-control-input" type="checkbox" id="cb_inr_rl" checked oninput="inr_relighting.setRL = this.checked;">
                   <label class="custom-control-label" for="cb_inr_rl">
-                    Automatic relighting
+                    Auto relighting
                   </label>
                 </div>
               </div>
@@ -496,6 +574,7 @@
     }
 
     var teaser_relighting = new Relighting("rl_s39");    
+    var s50_relighting = new Relighting("rl_s50"); 
     var inr_relighting = new Relighting("rl_inr");    
   </script>
 </body>
